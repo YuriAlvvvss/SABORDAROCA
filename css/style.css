@@ -49,6 +49,10 @@ html {
   overflow-x: clip;
 }
 
+main > section[id] {
+  scroll-margin-top: calc(var(--header-altura) + 1rem);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1019,6 +1023,15 @@ img.imagem--indisponivel {
    RESPONSIVO — Mobile (<768px)
    ======================================== */
 @media (max-width: 767px) {
+  .hero__botoes {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__botoes .btn {
+    width: 100%;
+  }
+
   .carrossel {
     max-width: 100%;
   }
@@ -1068,12 +1081,15 @@ img.imagem--indisponivel {
     padding: 2rem 1.25rem;
     gap: 2rem;
     transform: none;
-    transition: left var(--transicao);
+    transition: left var(--transicao), visibility var(--transicao);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    visibility: hidden;
   }
 
   .header__nav--aberto {
     left: 0;
+    visibility: visible;
   }
 
   .header__menu {

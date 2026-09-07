@@ -34,10 +34,17 @@
   });
 
   function atualizarEstadoMenu(aberto) {
+    if (!hamburgerBtn || !mainNav) {
+      return;
+    }
+
     hamburgerBtn.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
     const menuMobile = window.innerWidth < 768;
     mainNav.setAttribute('aria-hidden', String(menuMobile && !aberto));
-    mainNav.inert = menuMobile && !aberto;
+
+    if ('inert' in mainNav) {
+      mainNav.inert = menuMobile && !aberto;
+    }
   }
 
   /* ---------- Menu Mobile ---------- */
@@ -157,9 +164,12 @@
   }
 
   /* ---------- Service Worker ---------- */
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('./sw.js')
+      navigator.serviceWorker.register(new URL('./sw.js', window.location.href), { scope: './' })
+        .catch(function () {
+          // Ignora falha de registro em ambientes restritivos ou em páginas sem suporte.
+        });
     });
   }
 
@@ -172,6 +182,11 @@
     const btnProximo = carrossel.querySelector('.carrossel__btn--proximo');
     const pontos = carrossel.querySelectorAll('.carrossel__ponto');
     const totalSlides = slides.length;
+
+    if (!pista || !totalSlides) {
+      return;
+    }
+
     let indiceAtual = 0;
     let arrastando = false;
     let inicioX = 0;
@@ -244,7 +259,14 @@
         irParaSlide(indiceAtual);
       }
       deslocamentoX = 0;
-    });
+    }, { passive: true });
+
+    pista.addEventListener('touchcancel', function () {
+      arrastando = false;
+      pista.style.transition = '';
+      irParaSlide(indiceAtual);
+      deslocamentoX = 0;
+    }, { passive: true });
 
     /* Pausar autoplay em hover/foco */
     let intervaloAutoPlay;
