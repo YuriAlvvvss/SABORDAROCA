@@ -15,21 +15,33 @@ sabor-da-roca/
 │   └── style.css
 ├── js/
 │   └── script.js
-└── assets/
-    └── images/
-        ├── hero.jpg
-        ├── destaque-01.jpg
-        ├── destaque-02.jpg
-        ├── destaque-03.jpg
-        ├── destaque-04.jpg
-        └── sobre.jpg
+├── sw.js
+├── manifest.json
+├── _headers
+├── assets/
+│   ├── favicon.svg
+│   ├── favicon.png
+│   └── images/
+│       ├── foto1.webp
+│       ├── foto2.webp
+│       ├── foto3.webp
+│       ├── foto4.webp
+│       ├── foto5.webp
+│       ├── foto6.webp
+│       ├── foto7.webp
+│       ├── foto8.webp
+│       └── sobre.webp
+├── sitemap.xml
+├── robots.txt
+└── README.md
 ```
 
 ## Tecnologias
 
-- HTML5 semântico
-- CSS3 com variáveis, mobile-first
-- JavaScript vanilla (menu mobile + ano automático)
+- HTML5 semântico com JSON-LD (LocalBusiness)
+- CSS3 com variáveis, mobile-first, Critical CSS inline
+- JavaScript vanilla (menu mobile, carrossel, Service Worker)
+- PWA com manifest.json e Service Worker (cache offline)
 - Nenhuma dependência externa
 
 ## Como visualizar
@@ -41,9 +53,11 @@ Para publicar no GitHub Pages, publique a pasta do repositório e ative a branch
 ## Antes de publicar
 
 - [ ] Substituir `5511921347467` pelo número correto do WhatsApp (se necessário)
-- [ ] Adicionar fotos em `assets/images/`: `hero.jpg`, `destaque-01.jpg`, `destaque-02.jpg`, `destaque-03.jpg`, `destaque-04.jpg`, `sobre.jpg`
+- [ ] Adicionar fotos em `assets/images/`: `hero.webp`, `destaque-01.webp`, `destaque-02.webp`, `destaque-03.webp`, `destaque-04.webp`, `sobre.webp`
 - [ ] Ajustar textos dos cards de produtos conforme cardápio real
 - [ ] Revisar frases e descrições
+- [ ] Validar o HTML, o sitemap e os dados estruturados antes da publicação
+- [ ] Testar navegação por teclado, menu mobile e contraste em celular
 
 ## Imagens
 
@@ -60,12 +74,12 @@ As imagens utilizadas nesta primeira versão são **ilustrativas e temporárias*
 
 | Arquivo | Tipo sugerido |
 |---|---|
-| `hero.jpg` | Imagem horizontal de comida caseira, mesa rústica ou cenário de roça |
-| `destaque-01.jpg` | Ilustração de alimento artesanal (bolo, pão, sobremesa) |
-| `destaque-02.jpg` | Ilustração de ingredientes rurais, temperos ou cestas |
-| `destaque-03.jpg` | Ilustração de produto sendo preparado ou embalado |
-| `destaque-04.jpg` | Ilustração de especialidade regional ou prato típico |
-| `sobre.jpg` | Ilustração de preparo artesanal ou ambiente de cozinha caseira |
+| `hero.webp` | Imagem horizontal de comida caseira, mesa rústica ou cenário de roça |
+| `destaque-01.webp` | Ilustração de alimento artesanal (bolo, pão, sobremesa) |
+| `destaque-02.webp` | Ilustração de ingredientes rurais, temperos ou cestas |
+| `destaque-03.webp` | Ilustração de produto sendo preparado ou embalado |
+| `destaque-04.webp` | Ilustração de especialidade regional ou prato típico |
+| `sobre.webp` | Ilustração de preparo artesanal ou ambiente de cozinha caseira |
 
 ### Onde obter imagens ilustrativas
 
@@ -75,7 +89,47 @@ Caso não possua fotos próprias, utilize imagens de bancos com licença adequad
 - [Unsplash](https://unsplash.com/) — licença livre para uso comercial
 - [Pixabay](https://pixabay.com/) — licença Pixabay (livre para uso)
 
-> **Importante:** Revise a licença de cada imagem antes de publicar. Alguns bancos exigem atribuição ou possuem restações de uso.
+> **Importante:** Revise a licença de cada imagem antes de publicar. Alguns bancos exigem atribuição ou possuem restrições de uso.
+
+## Acessibilidade e SEO
+
+O site inclui:
+- Skip link para pular navegação
+- Contraste WCAG AA em todos os textos
+- Navegação por teclado e foco visível
+- Menu mobile com gerenciamento de foco e `inert`
+- Suporte a redução de movimento (`prefers-reduced-motion`)
+- Metadados Open Graph e Twitter Cards
+- JSON-LD LocalBusiness com endereço, telefone e horários
+- Alt texts descritivos em todas as imagens
+- Service Worker com cache offline
+- PWA com manifest.json
+
+Antes de publicar, confirme se endereço, telefone, horários, Instagram, URL canônica e imagens representam informações reais da marca.
+
+## Segurança
+
+### Arquivo `_headers`
+
+O arquivo `_headers` configura cabeçalhos de segurança para Cloudflare Pages:
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Strict-Transport-Security` (HSTS)
+- `Content-Security-Policy` (CSP)
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy` (bloqueia câmera, microfone)
+
+> **Nota:** O GitHub Pages não suporta o arquivo `_headers`. Para usar esses cabeçalhos, migre para Cloudflare Pages ou configure um proxy com essas regras.
+
+### Antes de publicar
+
+- [ ] Confirmar que o site está acessível somente por HTTPS
+- [ ] Ativar autenticação de dois fatores na conta do GitHub
+- [ ] Ativar secret scanning e push protection no repositório
+- [ ] Proteger a branch de publicação e exigir revisão antes de alterações
+- [ ] Confirmar que não existem tokens, senhas ou chaves no código e no histórico Git
+- [ ] Manter links externos com `rel="noopener noreferrer"`
+- [ ] Revisar periodicamente os links do WhatsApp, Instagram, Maps e sitemap
 
 ## Licença
 

@@ -1,0 +1,26 @@
+{
+  "name": "Sabor da Roça — Um pedacinho do sertão pertinho de você",
+  "short_name": "Sabor da Roça",
+  "description": "Comida artesanal com ingredientes selecionados e receitas de família em Rio Pequeno, São Paulo/SP.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#F4E6CE",
+  "theme_color": "#374001",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["food", "business"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+}
