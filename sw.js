@@ -3,23 +3,13 @@
    Cache offline e performance
    ======================================== */
 
-const NOME_CACHE = 'sabor-da-roca-v2';
+const NOME_CACHE = 'sabor-da-roca-v4';
 const URLS_CACHE = [
   './',
   './index.html',
   './css/style.css',
   './js/script.js',
-  './assets/favicon.svg',
-  './assets/favicon.png',
-  './assets/images/sobre.webp',
-  './assets/images/foto1.webp',
-  './assets/images/foto2.webp',
-  './assets/images/foto3.webp',
-  './assets/images/foto4.webp',
-  './assets/images/foto5.webp',
-  './assets/images/foto6.webp',
-  './assets/images/foto7.webp',
-  './assets/images/foto8.webp'
+  './assets/favicon.png'
 ];
 
 /* HTML offline fallback */

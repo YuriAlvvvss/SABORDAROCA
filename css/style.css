@@ -9,14 +9,13 @@
   --cor-terra: #E86531;
   --cor-terra-escura: #5A1903;
   --cor-verde: #374001;
-  --cor-laranja: #E88005;
   --cor-dourado: #E88005;
   --cor-texto: #5A1903;
   --cor-texto-claro: #FFF7E8;
   --cor-avermelhado: #E8412F;
 
   --cor-papel-sombra: #E8D5B7;
-  --cor-terra-suave: #E86531;
+
   --borda-clara: rgba(90, 25, 3, 0.14);
   --borda-escura: rgba(255, 249, 237, 0.18);
   --sombra-quente: 0 18px 40px rgba(90, 25, 3, 0.14);
@@ -193,15 +192,6 @@ ul {
 .btn--header:hover {
   background-color: var(--cor-fundo);
   color: var(--cor-verde);
-}
-
-.btn--produto {
-  background-color: var(--cor-laranja);
-  color: var(--cor-texto-claro);
-  width: 100%;
-}
-.btn--produto:hover {
-  background-color: var(--cor-terra-escura);
 }
 
 .btn--whatsapp {
@@ -516,88 +506,12 @@ img.imagem--indisponivel {
   background-image: linear-gradient(180deg, rgba(232, 213, 183, 0.2), transparent 25%);
 }
 
-.produto-card {
-  background-color: var(--cor-fundo);
-  border: 1px solid var(--borda-clara);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: var(--sombra);
-  transition: box-shadow var(--transicao), transform var(--transicao), border-color var(--transicao);
-}
-.produto-card:hover {
-  box-shadow: var(--sombra-hover);
-  transform: translateY(-2px);
-  border-color: rgba(232, 101, 49, 0.3);
-}
-
-.produto-card:focus-within {
-  border-color: var(--cor-dourado);
-  box-shadow: var(--sombra-hover);
-}
-
-.produto-card__imagem {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background-color: rgba(232, 101, 49, 0.06);
-  position: relative;
-}
-
-.produto-card__imagem::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(84, 36, 21, 0.2));
-  pointer-events: none;
-}
-
-.produto-card__imagem::before {
-  content: 'Em destaque';
-  position: absolute;
-  z-index: 1;
-  top: 0.85rem;
-  left: 0.85rem;
-  padding: 0.3rem 0.65rem;
-  border: 1px solid rgba(255, 249, 237, 0.35);
-  border-radius: 999px;
-  background-color: rgba(84, 36, 21, 0.78);
-  color: var(--cor-texto-claro);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.produto-card__imagem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transicao);
-}
-.produto-card:hover .produto-card__imagem img {
-  transform: scale(1.03);
-}
-
-.produto-card__conteudo {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  min-height: 210px;
-}
-
-.produto-card__titulo {
-  font-family: var(--fonte-titulo);
-  font-size: 1.15rem;
-  color: var(--cor-terra-escura);
-}
-
-.produto-card__descricao {
+.produtos__granel {
+  text-align: center;
   font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--cor-texto);
-  opacity: 0.85;
-  flex: 1;
+  color: var(--cor-terra);
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
 }
 
 .produtos__aviso {
@@ -703,7 +617,7 @@ img.imagem--indisponivel {
 }
 
 .carrossel__ponto:hover {
-  background-color: var(--cor-terra-suave);
+  background-color: var(--cor-terra);
 }
 
 .carrossel__ponto--ativo {
@@ -826,15 +740,6 @@ img.imagem--indisponivel {
   gap: 1rem;
   max-width: 480px;
   margin: 0 auto;
-}
-
-.contato__local {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-  opacity: 0.9;
 }
 
 .contato__grid {
@@ -1213,12 +1118,10 @@ img.imagem--indisponivel {
 /* ========================================
    PLACEHOLDER DE IMAGEM (quando não há foto)
    ======================================== */
-.produto-card__imagem img[src=""],
 .sobre__imagem img[src=""] {
   display: none;
 }
 
-.produto-card__imagem:empty::before,
 .sobre__imagem:empty::before {
   display: none;
 }
@@ -1303,15 +1206,6 @@ img.imagem--indisponivel {
   opacity: 0.65;
 }
 
-.depoimentos__nota {
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--cor-texto);
-  opacity: 0.55;
-  margin-top: 2rem;
-  font-style: italic;
-}
-
 /* ========================================
    FAQ
    ======================================== */
@@ -1393,16 +1287,6 @@ img.imagem--indisponivel {
   line-height: 1.65;
   color: var(--cor-texto);
   opacity: 0.85;
-}
-
-/* ========================================
-   FOOTER — Info de entrega
-   ======================================== */
-.footer__entrega {
-  font-size: 0.85rem;
-  opacity: 0.75;
-  max-width: 480px;
-  text-align: center;
 }
 
 /* ========================================

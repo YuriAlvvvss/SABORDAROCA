@@ -17,8 +17,8 @@
   function debounce(fn, atraso) {
     let timer;
     return function () {
-      var contexto = this;
-      var argumentos = arguments;
+      const contexto = this;
+      const argumentos = arguments;
       clearTimeout(timer);
       timer = setTimeout(function () {
         fn.apply(contexto, argumentos);
@@ -160,12 +160,6 @@
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('./sw.js')
-        .then(function (registro) {
-          /* SW registrado com sucesso */
-        })
-        .catch(function (erro) {
-          /* Falha silenciosa — site funciona sem SW */
-        });
     });
   }
 
@@ -210,7 +204,7 @@
 
     pontos.forEach(function (ponto) {
       ponto.addEventListener('click', function () {
-        var indice = parseInt(ponto.getAttribute('data-indice'), 10);
+        const indice = parseInt(ponto.getAttribute('data-indice'), 10);
         irParaSlide(indice);
       });
     });
@@ -234,14 +228,14 @@
     pista.addEventListener('touchmove', function (e) {
       if (!arrastando) return;
       deslocamentoX = e.touches[0].clientX - inicioX;
-      var deslocamentoAtual = -(indiceAtual * 100) + (deslocamentoX / pista.offsetWidth * 100);
+      const deslocamentoAtual = -(indiceAtual * 100) + (deslocamentoX / pista.offsetWidth * 100);
       pista.style.transform = 'translateX(' + deslocamentoAtual + '%)';
     }, { passive: true });
 
     pista.addEventListener('touchend', function () {
       arrastando = false;
       pista.style.transition = '';
-      var limiar = pista.offsetWidth * 0.2;
+      const limiar = pista.offsetWidth * 0.2;
       if (deslocamentoX < -limiar) {
         irParaSlide(indiceAtual + 1);
       } else if (deslocamentoX > limiar) {
@@ -253,7 +247,7 @@
     });
 
     /* Pausar autoplay em hover/foco */
-    var intervaloAutoPlay;
+    let intervaloAutoPlay;
     function iniciarAutoPlay() {
       intervaloAutoPlay = setInterval(function () {
         irParaSlide(indiceAtual + 1);

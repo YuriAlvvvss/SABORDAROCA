@@ -9,24 +9,21 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yurialvvvss.github.io/SABORDAROCA/">
-  <!-- ATUALIZADO: fallback PNG para navegadores que não suportam SVG favicon -->
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="./assets/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="./assets/favicon.png" type="image/png">
   <link rel="manifest" href="./manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Sabor da Roça">
-  <!-- ATUALIZADO: preload da imagem sobre.webp usada na seção Sobre (se houver hero image, adicionar preload aqui) -->
-  <!-- OBS: O hero utiliza gradiente CSS, sem <img>. Se uma imagem for adicionada ao hero, inclua:
-       <link rel="preload" as="image" href="./assets/images/hero.webp" imagesrcset="./assets/images/hero.webp" imagesizes="100vw" fetchpriority="high"> -->
   <link rel="preload" as="image" href="./assets/images/sobre.webp" fetchpriority="high">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Sabor da Roça">
   <meta property="og:title" content="Sabor da Roça — Um pedacinho do sertão pertinho de você">
   <meta property="og:description" content="Comida artesanal com ingredientes selecionados e receitas de família em Rio Pequeno, São Paulo/SP.">
   <meta property="og:url" content="https://yurialvvvss.github.io/SABORDAROCA/">
-  <meta property="og:image" content="https://yurialvvvss.github.io/SABORDAROCA/assets/images/hero.webp">
+  <meta property="og:image" content="https://yurialvvvss.github.io/SABORDAROCA/assets/images/foto1.webp">
   <meta property="og:image:alt" content="Comida caseira em uma mesa rústica">
   <meta property="og:image:type" content="image/webp">
   <meta property="og:image:width" content="600">
@@ -34,7 +31,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sabor da Roça — Um pedacinho do sertão pertinho de você">
   <meta name="twitter:description" content="Comida artesanal com ingredientes selecionados e receitas de família em Rio Pequeno, São Paulo/SP.">
-  <meta name="twitter:image" content="https://yurialvvvss.github.io/SABORDAROCA/assets/images/hero.webp">
+  <meta name="twitter:image" content="https://yurialvvvss.github.io/SABORDAROCA/assets/images/foto1.webp">
   <meta name="twitter:image:alt" content="Comida caseira em uma mesa rústica">
   <title>Sabor da Roça — Um pedacinho do sertão pertinho de você</title>
   <!-- Critical CSS — renderiza header e hero sem esperar o CSS externo -->
@@ -62,7 +59,6 @@
     .btn--secundario{background-color:transparent;color:#E86531;border-color:#E86531}
     .header__hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem;min-height:44px;min-width:44px}
   </style>
-  <!-- ATUALIZADO: JSON-LD com sameAs para WhatsApp Business -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -70,7 +66,7 @@
       "name": "Sabor da Roça",
       "description": "Comida artesanal com ingredientes selecionados e receitas de família em Rio Pequeno, São Paulo.",
       "url": "https://yurialvvvss.github.io/SABORDAROCA/",
-      "image": "https://yurialvvvss.github.io/SABORDAROCA/assets/images/hero.webp",
+      "image": "https://yurialvvvss.github.io/SABORDAROCA/assets/images/foto1.webp",
       "telephone": "+55 11 92134-7467",
       "sameAs": [
         "https://www.instagram.com/saboor_da_roca/",
@@ -118,9 +114,9 @@
         <ul class="header__menu">
           <li><a href="#inicio" class="header__link" aria-current="location">Início</a></li>
           <li><a href="#destaques" class="header__link">Destaques</a></li>
-          <!-- ATUALIZADO: texto do menu alinhado com o título da seção (era "Produtos", seção se chama "Sabores que acolhem" — renomeado para "Especiais" mantendo o id #produtos) -->
           <li><a href="#produtos" class="header__link">Especiais</a></li>
           <li><a href="#sobre" class="header__link">Sobre</a></li>
+          <li><a href="#depoimentos" class="header__link">Depoimentos</a></li>
           <li><a href="#faq" class="header__link">FAQ</a></li>
           <li><a href="#contato" class="header__link">Contato</a></li>
         </ul>
@@ -138,7 +134,6 @@
   <main id="conteudo-principal">
 
     <!-- ========== HERO ========== -->
-    <!-- ATUALIZADO: copy reescrito com foco em emoção e promessa de marca, sem repetição -->
     <section class="hero" id="inicio">
       <div class="hero__container">
         <div class="hero__texto">
@@ -146,8 +141,6 @@
           <p class="hero__localizacao">📍 R. Barone Mercadante, 60 - Rio Pequeno, São Paulo - SP</p>
           <h1 class="hero__titulo">O gosto de casa, feito com as mãos da roça</h1>
           <p class="hero__subtitulo">Receitas que nasceram no sertão e chegaram até você — feitas com ingredientes de verdade e o cuidado de quem cozinha com o coração.</p>
-          <!-- ATUALIZADO: informação sobre venda a granel e variedade de produtos -->
-          <p class="hero__preco"><strong>Produtos a granel</strong> <span class="hero__preco-obs">— temperos, grãos, Erva doce e muito mais. Confira as opções pelo WhatsApp!</span></p>
           <div class="hero__botoes">
             <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--primario">
               <svg class="btn__icone" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -163,7 +156,6 @@
     </section>
 
     <!-- ========== DIFERENCIAIS ========== -->
-    <!-- ATUALIZADO: copy reescrito com foco em benefícios concretos e tangíveis -->
     <section class="diferenciais" id="destaques">
       <div class="secao__container">
         <h2 class="secao__titulo">O que faz a diferença na Sabor da Roça</h2>
@@ -222,15 +214,8 @@
       <div class="secao__container">
         <h2 class="secao__titulo">Sabores que acolhem</h2>
         <p class="secao__subtitulo">Conheça algumas das nossas especialidades. Deslize para ver mais.</p>
+        <p class="produtos__granel"><strong>Produtos a granel</strong> — temperos, grãos, Erva doce e muito mais. Confira as opções pelo WhatsApp!</p>
 
-        <!-- ATUALIZADO: imagens do carrossel com sugestão de compressão WebP -->
-        <!--
-          NOTA DE PERFORMANCE: Para melhorar Core Web Vitals, comprima todas as imagens
-          do carrossel (foto1–foto8) para WebP com qualidade de 75–80%.
-          Ferramentas recomendadas: Squoosh (squoosh.app), Sharp (CLI), ou TinyPNG.
-          Tamanho alvo: cada imagem < 150KB para carrossel 600x450.
-          Se possível, crie versões srcset com 400w e 800w para art-directed loading.
-        -->
         <div class="carrossel" role="region" aria-label="Galeria de produtos" aria-roledescription="carrossel">
           <div class="carrossel__pista">
             <div class="carrossel__slides">
@@ -285,11 +270,9 @@
     </section>
 
     <!-- ========== SOBRE ========== -->
-    <!-- ATUALIZADO: copy reescrito com tom narrativo e propósito de marca -->
     <section class="sobre" id="sobre">
       <div class="sobre__container">
         <div class="sobre__imagem">
-          <!-- ATUALIZADO: imagem sobre com loading lazy e decoding async -->
           <img src="./assets/images/sobre.webp" alt="Preparo de alimento artesanal em ambiente rústico" loading="lazy" decoding="async" width="500" height="400">
         </div>
         <div class="sobre__texto">
@@ -301,14 +284,13 @@
       </div>
     </section>
 
-    <!-- ATUALIZADO: seção de depoimentos de clientes -->
+    <!-- ========== DEPOIMENTOS ========== -->
     <section class="depoimentos" id="depoimentos">
       <div class="secao__container">
         <h2 class="secao__titulo">O que dizem sobre a gente</h2>
         <p class="secao__subtitulo">Depoimentos de quem já provou e voltou.</p>
 
         <div class="depoimentos__grid">
-          <!-- ATUALIZADO: depoimentos reais do Google -->
           <article class="depoimento-card">
             <div class="depoimento-card__estrelas" aria-label="5 de 5 estrelas">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -364,7 +346,7 @@
       </div>
     </section>
 
-    <!-- ATUALIZADO: seção de FAQ com <details>/<summary> acessível -->
+    <!-- ========== FAQ ========== -->
     <section class="faq" id="faq">
       <div class="secao__container">
         <h2 class="secao__titulo">Perguntas frequentes</h2>
@@ -424,7 +406,6 @@
                 <span class="horario__hora">09:00 às 14:00</span>
               </div>
             </div>
-            <!-- ATUALIZADO: informação de retirada nos horários -->
             <p class="info-card__nota">Retirada no balcão. Faça seu pedido pelo WhatsApp!</p>
           </div>
 
@@ -502,7 +483,6 @@
     </div>
   </footer>
 
-  <!-- ATUALIZADO: atributo defer para não bloquear renderização -->
   <script src="./js/script.js" defer></script>
 </body>
 </html>
