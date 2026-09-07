@@ -132,9 +132,13 @@ A estrutura está pronta para ser publicada em um repositório do GitHub Pages. 
 https://yurialvvvss.github.io/SABORDAROCA/
 ```
 
-### Cloudflare Pages
+### GitHub Pages (deploy principal)
 
-O arquivo `_headers` está configurado para funcionar em Cloudflare Pages e inclui cabeçalhos de segurança e cache. Em GitHub Pages, esses cabeçalhos não são aplicados pela plataforma.
+Este projeto foi ajustado para funcionar de forma segura e estável em GitHub Pages. Como a plataforma não processa o arquivo `_headers`, as regras de segurança do Cloudflare não serão aplicadas por lá. O que permanece em uso é a camada de proteção dentro do código e as boas práticas de configuração do site.
+
+### Cloudflare Pages (opcional)
+
+O arquivo `_headers` continua disponível para uso em Cloudflare Pages e inclui cabeçalhos de segurança e cache avançados, mas não é obrigatório para o deploy principal em GitHub Pages.
 
 ## SEO e acessibilidade
 
@@ -165,9 +169,9 @@ O projeto conta com:
 
 ## Observações importantes
 
-A versão atual usa imagens ilustrativas e temporárias para compor a identidade visual. Elas servem como placeholder visual e devem ser substituídas por fotografias reais da marca quando estiverem disponíveis.
+As imagens atuais são fotografias reais da Sabor da Roça e já estão sendo utilizadas para compor a identidade visual do projeto.
 
-Também vale confirmar antes da publicação final:
+Mesmo assim, vale confirmar antes da publicação final:
 
 - se o WhatsApp está correto e ativo;
 - se o Instagram e e-mail são oficiais;
