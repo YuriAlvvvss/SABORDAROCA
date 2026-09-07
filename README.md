@@ -1,26 +1,57 @@
 # Sabor da Roça
 
-Landing page institucional para a marca **Sabor da Roça**, um negócio local de produtos artesanais em Rio Pequeno, São Paulo/SP.
+Landing page institucional e estática da marca Sabor da Roça, criada para apresentar o negócio, fortalecer a presença online e direcionar o cliente para contato direto via WhatsApp, Instagram e e-mail.
 
-## Sobre
+## Estado atual do projeto
 
-Site estático e responsivo, inspirado em estética rústica e sertaneja. O objetivo é apresentar a marca e direcionar o visitante para contato via Instagram e WhatsApp. Não há funcionalidades de e-commerce, carrinho, cadastro ou pagamento.
+O projeto já está em um estado funcional de site institucional responsivo, com:
 
-## Estrutura
+- estrutura HTML semântica e acessível;
+- layout visual rústico/sertanejo em tons quentes;
+- navegação responsiva com menu mobile;
+- carrossel de imagens com navegação por teclado, clique e swipe em dispositivos touch;
+- suporte para redução de movimento e foco visível;
+- SEO básico para busca e redes sociais;
+- integração com PWA via manifest e Service Worker;
+- fallback offline para páginas e imagens;
+- dados estruturados em JSON-LD para LocalBusiness;
+- botões de contato com WhatsApp, Instagram e e-mail.
 
-```
-sabor-da-roca/
-├── index.html
+Este projeto não inclui e-commerce, login, backend, banco de dados ou checkout. Ele funciona como uma vitrine digital para o negócio local.
+
+## Informações do negócio
+
+- Nome: Sabor da Roça
+- Endereço: R. Barone Mercadante, 60 - Rio Pequeno, São Paulo - SP, 05399-010
+- WhatsApp: +55 11 92134-7467
+- Instagram: @saboor_da_roca
+- E-mail: sabordarocaca@gmail.com
+- Horário de funcionamento:
+  - Segunda a sábado: 09:00 às 21:00
+  - Domingo: 09:00 às 14:00
+- Formas de pagamento: PIX, cartão de crédito/débito, vale-alimentação/refeição e dinheiro
+- Retirada: no balcão, mediante pedido pelo WhatsApp
+
+## Objetivo do site
+
+O objetivo principal é transmitir a identidade da marca, apresentar os diferenciais do negócio e facilitar o contato do cliente com a loja para pedidos, dúvidas e visitas.
+
+## Estrutura do projeto
+
+```text
+SABORDAROCA/
+├── index.html              # Página principal do site
 ├── css/
-│   └── style.css
+│   └── style.css          # Estilos completos do layout
 ├── js/
-│   └── script.js
-├── sw.js
-├── manifest.json
-├── _headers
+│   └── script.js          # Interações: menu, carrossel, observadores, ano automático
+├── sw.js                  # Service Worker para cache offline e fallback
+├── manifest.json          # Configuração da aplicação web progressiva (PWA)
+├── _headers               # Cabeçalhos de segurança para Cloudflare Pages
 ├── assets/
-│   ├── favicon.svg
-│   ├── favicon.png
+│   ├── favicon.png        # Favicon do site
+│   ├── icon-192.png       # Ícone PWA 192x192
+│   ├── icon-512.png       # Ícone PWA 512x512
 │   └── images/
 │       ├── foto1.webp
 │       ├── foto2.webp
@@ -31,106 +62,120 @@ sabor-da-roca/
 │       ├── foto7.webp
 │       ├── foto8.webp
 │       └── sobre.webp
-├── sitemap.xml
-├── robots.txt
-└── README.md
+├── sitemap.xml            # Sitemap para SEO
+├── robots.txt             # Orientações para crawlers
+├── README.md              # Documentação do projeto
+└── .gitignore             # Arquivos ignorados pelo Git
 ```
 
-## Tecnologias
+## Tecnologias utilizadas
 
-- HTML5 semântico com JSON-LD (LocalBusiness)
-- CSS3 com variáveis, mobile-first, Critical CSS inline
-- JavaScript vanilla (menu mobile, carrossel, Service Worker)
-- PWA com manifest.json e Service Worker (cache offline)
-- Nenhuma dependência externa
+- HTML5 semântico
+- CSS3 moderno com variáveis, responsividade e suporte a motion reduction
+- JavaScript vanilla sem dependências externas
+- JSON-LD para dados estruturados do negócio
+- Metadata SEO para Open Graph e Twitter Cards
+- PWA com manifest e Service Worker
+- Arquivo `_headers` para hardening em Cloudflare Pages
 
-## Como visualizar
+## Funcionalidades implementadas
+
+- Header fixo com navegação principal
+- Menu mobile com botão hambúrguer e controle de foco
+- Hero section com CTA para WhatsApp e Instagram
+- Seções de destaques, produtos, sobre, depoimentos, FAQ e contato
+- Carrossel com navegação por botões, teclado e swipe
+- Auto-play com pausa em hover/foco
+- Observação de interseção para revelar elementos e marcar link ativo
+- Ano automático no rodapé
+- Fallback de imagem em caso de erro de carregamento
+- Offline cache para página e ativos principais
+- Fallback HTML para página offline
+- Meta tags e SEO de marca para compartilhamento em redes sociais
+
+## Seções do site
+
+- Início
+- Destaques
+- Especiais
+- Sobre
+- Depoimentos
+- FAQ
+- Contato
+- Footer
+
+## Como visualizar localmente
 
 Abra o arquivo `index.html` diretamente no navegador.
 
-Para publicar no GitHub Pages, publique a pasta do repositório e ative a branch `main` nas configurações de Pages.
+Se quiser testar em um servidor local, pode usar qualquer servidor simples, por exemplo:
 
-## Antes de publicar
+```bash
+python -m http.server 8000
+```
 
-- [ ] Substituir `5511921347467` pelo número correto do WhatsApp (se necessário)
-- [ ] Adicionar fotos em `assets/images/`: `hero.webp`, `destaque-01.webp`, `destaque-02.webp`, `destaque-03.webp`, `destaque-04.webp`, `sobre.webp`
-- [ ] Ajustar textos dos cards de produtos conforme cardápio real
-- [ ] Revisar frases e descrições
-- [ ] Validar o HTML, o sitemap e os dados estruturados antes da publicação
-- [ ] Testar navegação por teclado, menu mobile e contraste em celular
+Depois acesse:
 
-## Imagens
+```text
+http://localhost:8000
+```
 
-As imagens utilizadas nesta primeira versão são **ilustrativas e temporárias**. Elas servem apenas como referência visual para compor a identidade da página e devem ser substituídas por fotos reais da Sabor da Roça assim que estiverem disponíveis.
+## Publicação e deploy
 
-### Diretrizes
+O projeto já está preparado para publicação estática em hospedagens como GitHub Pages ou Cloudflare Pages.
 
-- As imagens atuais são genéricas e não representam produtos, locais ou pessoas reais da marca.
-- Não afirmam, sugerem ou dão a entender que os alimentos, pratos, embalagens ou ambientes das imagens pertencem à Sabor da Roça.
-- Não contêm marcas, logotipos ou embalagens comerciais reconhecíveis.
-- Devem ser substituídas por fotografias próprias da marca.
+### GitHub Pages
 
-### Arquivos esperados
+A estrutura está pronta para ser publicada em um repositório do GitHub Pages. A URL canônica configurada no projeto é:
 
-| Arquivo | Tipo sugerido |
-|---|---|
-| `hero.webp` | Imagem horizontal de comida caseira, mesa rústica ou cenário de roça |
-| `destaque-01.webp` | Ilustração de alimento artesanal (bolo, pão, sobremesa) |
-| `destaque-02.webp` | Ilustração de ingredientes rurais, temperos ou cestas |
-| `destaque-03.webp` | Ilustração de produto sendo preparado ou embalado |
-| `destaque-04.webp` | Ilustração de especialidade regional ou prato típico |
-| `sobre.webp` | Ilustração de preparo artesanal ou ambiente de cozinha caseira |
+```text
+https://yurialvvvss.github.io/SABORDAROCA/
+```
 
-### Onde obter imagens ilustrativas
+### Cloudflare Pages
 
-Caso não possua fotos próprias, utilize imagens de bancos com licença adequada:
+O arquivo `_headers` está configurado para funcionar em Cloudflare Pages e inclui cabeçalhos de segurança e cache. Em GitHub Pages, esses cabeçalhos não são aplicados pela plataforma.
 
-- [Pexels](https://www.pexels.com/) — licença livre para uso comercial
-- [Unsplash](https://unsplash.com/) — licença livre para uso comercial
-- [Pixabay](https://pixabay.com/) — licença Pixabay (livre para uso)
+## SEO e acessibilidade
 
-> **Importante:** Revise a licença de cada imagem antes de publicar. Alguns bancos exigem atribuição ou possuem restrições de uso.
+O projeto já implementa alguns pontos importantes de otimização e qualidade de experiência:
 
-## Acessibilidade e SEO
+- meta description e título otimizados
+- canonical URL
+- Open Graph e Twitter Cards
+- `robots.txt` e `sitemap.xml`
+- JSON-LD LocalBusiness
+- skip link para navegação
+- foco visível em elementos interativos
+- contraste e textos legíveis
+- suporte a `prefers-reduced-motion`
+- ARIA labels em elementos relevantes
+- alt text descritivo nas imagens
 
-O site inclui:
-- Skip link para pular navegação
-- Contraste WCAG AA em todos os textos
-- Navegação por teclado e foco visível
-- Menu mobile com gerenciamento de foco e `inert`
-- Suporte a redução de movimento (`prefers-reduced-motion`)
-- Metadados Open Graph e Twitter Cards
-- JSON-LD LocalBusiness com endereço, telefone e horários
-- Alt texts descritivos em todas as imagens
-- Service Worker com cache offline
-- PWA com manifest.json
+## PWA
 
-Antes de publicar, confirme se endereço, telefone, horários, Instagram, URL canônica e imagens representam informações reais da marca.
+O projeto conta com:
 
-## Segurança
+- `manifest.json`
+- `sw.js`
+- ícones para 192x192 e 512x512
+- suporte para instalação em dispositivos móveis
+- cache para página principal e ativos estáticos
+- fallback offline para o site
 
-### Arquivo `_headers`
+## Observações importantes
 
-O arquivo `_headers` configura cabeçalhos de segurança para Cloudflare Pages:
-- `X-Content-Type-Options: nosniff`
-- `X-Frame-Options: DENY`
-- `Strict-Transport-Security` (HSTS)
-- `Content-Security-Policy` (CSP)
-- `Referrer-Policy: strict-origin-when-cross-origin`
-- `Permissions-Policy` (bloqueia câmera, microfone)
+A versão atual usa imagens ilustrativas e temporárias para compor a identidade visual. Elas servem como placeholder visual e devem ser substituídas por fotografias reais da marca quando estiverem disponíveis.
 
-> **Nota:** O GitHub Pages não suporta o arquivo `_headers`. Para usar esses cabeçalhos, migre para Cloudflare Pages ou configure um proxy com essas regras.
+Também vale confirmar antes da publicação final:
 
-### Antes de publicar
-
-- [ ] Confirmar que o site está acessível somente por HTTPS
-- [ ] Ativar autenticação de dois fatores na conta do GitHub
-- [ ] Ativar secret scanning e push protection no repositório
-- [ ] Proteger a branch de publicação e exigir revisão antes de alterações
-- [ ] Confirmar que não existem tokens, senhas ou chaves no código e no histórico Git
-- [ ] Manter links externos com `rel="noopener noreferrer"`
-- [ ] Revisar periodicamente os links do WhatsApp, Instagram, Maps e sitemap
+- se o WhatsApp está correto e ativo;
+- se o Instagram e e-mail são oficiais;
+- se o endereço e horários são os do estabelecimento;
+- se as imagens e textos refletem a realidade do negócio;
+- se a URL canônica e os metadados seguem a identidade real da marca.
 
 ## Licença
 
 Todos os direitos reservados © Sabor da Roça.
+
