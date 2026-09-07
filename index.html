@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sabor da Roça — sabores, tradição e carinho em Rio Pequeno, São Paulo/SP. Um pedacinho do sertão pertinho de você.">
+  <meta name="theme-color" content="#8F3B1D">
+  <title>Sabor da Roça — Um pedacinho do sertão pertinho de você</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="header__container">
+      <a href="#inicio" class="header__logo" aria-label="Sabor da Roça — ir para o início">
+        <span class="header__logo-nome">Sabor da Roça</span>
+        <span class="header__logo-sub">Tradição em cada detalhe</span>
+      </a>
+
+      <nav class="header__nav" id="main-nav" aria-label="Menu principal">
+        <ul class="header__menu">
+          <li><a href="#inicio" class="header__link">Início</a></li>
+          <li><a href="#destaques" class="header__link">Destaques</a></li>
+          <li><a href="#produtos" class="header__link">Produtos</a></li>
+          <li><a href="#sobre" class="header__link">Sobre</a></li>
+          <li><a href="#contato" class="header__link">Contato</a></li>
+        </ul>
+        <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--header">Fale com a gente</a>
+      </nav>
+
+      <button class="header__hamburger" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+        <span class="header__hamburger-linha"></span>
+        <span class="header__hamburger-linha"></span>
+        <span class="header__hamburger-linha"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="inicio">
+      <div class="hero__container">
+        <div class="hero__texto">
+          <p class="hero__localizacao">📍 R. Barone Mercadante, 60 - Rio Pequeno, São Paulo - SP</p>
+          <h1 class="hero__titulo">Um pedacinho do sertão pertinho de você</h1>
+          <p class="hero__subtitulo">Sabores, tradição e carinho para deixar o seu dia ainda mais especial.</p>
+          <div class="hero__botoes">
+            <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--primario">
+              <svg class="btn__icone" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Fale pelo WhatsApp
+            </a>
+            <a href="https://www.instagram.com/saboor_da_roca/" target="_blank" rel="noopener noreferrer" class="btn btn--secundario">
+              <svg class="btn__icone" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              Conheça o Instagram
+            </a>
+          </div>
+        </div>
+        <div class="hero__imagem">
+          <!-- Substitua por uma imagem ilustrativa horizontal de comida caseira, mesa rústica ou cenário de roça. -->
+          <img src="./assets/images/hero.webp" alt="Imagem ilustrativa de comida caseira servida em superfície de madeira rústica" width="600" height="400">
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DIFERENCIAIS ========== -->
+    <section class="diferenciais" id="destaques">
+      <div class="secao__container">
+        <h2 class="secao__titulo">Por que escolher a Sabor da Roça?</h2>
+        <p class="secao__subtitulo">Qualidade e tradição em cada detalhe.</p>
+
+        <div class="diferenciais__grid">
+          <article class="diferencial-card">
+            <div class="diferencial-card__icone">
+              <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M32 4l8 16h16l-12 10 4 18-16-10-16 10 4-18L8 20h16z"/>
+              </svg>
+            </div>
+            <h3 class="diferencial-card__titulo">Qualidade e cuidado</h3>
+            <p class="diferencial-card__texto">Cada preparo é feito com atenção e selecionando o melhor para chegar até você.</p>
+          </article>
+
+          <article class="diferencial-card">
+            <div class="diferencial-card__icone">
+              <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="32" cy="32" r="28"/>
+                <path d="M20 38c2-6 8-10 12-10s10 4 12 10"/>
+                <circle cx="32" cy="20" r="6"/>
+              </svg>
+            </div>
+            <h3 class="diferencial-card__titulo">Tradição regional</h3>
+            <p class="diferencial-card__texto">Sabores que carregam a essência do sertão, com receitas que passam de geração em geração.</p>
+          </article>
+
+          <article class="diferencial-card">
+            <div class="diferencial-card__icone">
+              <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M32 56C18 46 8 36 8 24a12 12 0 0124 0 12 12 0 0124 0c0 12-10 22-24 32z"/>
+              </svg>
+            </div>
+            <h3 class="diferencial-card__titulo">Feito com carinho</h3>
+            <p class="diferencial-card__texto">Preparado com afeto, como na roça, para que cada momento seja especial.</p>
+          </article>
+
+          <article class="diferencial-card">
+            <div class="diferencial-card__icone">
+              <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 52V20a4 4 0 014-4h40a4 4 0 014 4v32"/>
+                <path d="M16 52V36h32v16"/>
+                <path d="M24 28h16"/>
+              </svg>
+            </div>
+            <h3 class="diferencial-card__titulo">Atendimento próximo</h3>
+            <p class="diferencial-card__texto">Estamos aqui em Rio Pequeno para atender você com atenção e respeito.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DESTAQUES / PRODUTOS ========== -->
+    <!-- As imagens abaixo são ilustrativas. Substitua por fotos reais dos produtos da Sabor da Roça. -->
+    <section class="produtos" id="produtos">
+      <div class="secao__container">
+        <h2 class="secao__titulo">Sabores que acolhem</h2>
+        <p class="secao__subtitulo">Conheça algumas das nossas especialidades. Clique para consultar disponibilidade.</p>
+
+        <div class="produtos__grid">
+          <article class="produto-card">
+            <div class="produto-card__imagem">
+              <!-- Substitua por imagem ilustrativa de alimento artesanal, como bolo, pão ou sobremesa caseira. -->
+              <img src="./assets/images/destaque-01.webp" alt="Imagem ilustrativa de alimento artesanal servido em mesa rústica" loading="lazy" width="400" height="300">
+            </div>
+            <div class="produto-card__conteudo">
+              <h3 class="produto-card__titulo">Sabores artesanais</h3>
+              <p class="produto-card__descricao">Prepare-se para conhecer sabores que lembram afeto e tradição. Edite este texto com o nome real do produto.</p>
+              <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--produto">Consultar disponibilidade</a>
+            </div>
+          </article>
+
+          <article class="produto-card">
+            <div class="produto-card__imagem">
+              <!-- Substitua por imagem ilustrativa de ingredientes rurais, temperos ou cestas de produtos. -->
+              <img src="./assets/images/destaque-02.webp" alt="Imagem ilustrativa de ingredientes rurais e temperos naturais" loading="lazy" width="400" height="300">
+            </div>
+            <div class="produto-card__conteudo">
+              <h3 class="produto-card__titulo">Tradições da roça</h3>
+              <p class="produto-card__descricao">Receitas que carregam a essência do sertão. Edite este texto com a descrição do seu produto.</p>
+              <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--produto">Consultar disponibilidade</a>
+            </div>
+          </article>
+
+          <article class="produto-card">
+            <div class="produto-card__imagem">
+              <!-- Substitua por imagem ilustrativa de produto embalado artesanalmente ou processo de preparo. -->
+              <img src="./assets/images/destaque-03.webp" alt="Imagem ilustrativa de produto artesanal sendo preparado com cuidado" loading="lazy" width="400" height="300">
+            </div>
+            <div class="produto-card__conteudo">
+              <h3 class="produto-card__titulo">Ingredientes selecionados</h3>
+              <p class="produto-card__descricao">Qualidade e cuidado desde a escolha dos ingredientes. Edite este texto conforme o produto real.</p>
+              <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--produto">Consultar disponibilidade</a>
+            </div>
+          </article>
+
+          <article class="produto-card">
+            <div class="produto-card__imagem">
+              <!-- Substitua por imagem ilustrativa de especialidade regional, prato típico ou doce caseiro. -->
+              <img src="./assets/images/destaque-04.webp" alt="Imagem ilustrativa de especialidade regional servida em louça rústica" loading="lazy" width="400" height="300">
+            </div>
+            <div class="produto-card__conteudo">
+              <h3 class="produto-card__titulo">Especialidades regionais</h3>
+              <p class="produto-card__descricao">Sabores únicos que trazem a identidade do nosso lugar. Edite com o nome e a descrição do item.</p>
+              <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--produto">Consultar disponibilidade</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="produtos__aviso">Imagens ilustrativas. Consulte a Sabor da Roça para conhecer as opções disponíveis.</p>
+      </div>
+    </section>
+
+    <!-- ========== SOBRE ========== -->
+    <section class="sobre" id="sobre">
+      <div class="sobre__container">
+        <div class="sobre__imagem">
+          <!-- Substitua por imagem ilustrativa de preparo artesanal, ingredientes rurais ou ambiente de cozinha caseira. -->
+          <img src="./assets/images/sobre.webp" alt="Imagem ilustrativa de preparo de alimento artesanal em ambiente rústico" loading="lazy" width="500" height="400">
+        </div>
+        <div class="sobre__texto">
+          <h2 class="secao__titulo">Da roça para perto de você</h2>
+          <p>A <strong>Sabor da Roça</strong> celebra a qualidade, a tradição e os sabores que lembram afeto. Em Rio Pequeno, a marca nasce para aproximar você de um pedacinho do sertão.</p>
+          <p>Cada produto é preparado com ingredientes selecionados e muito carinho, mantendo viva a essência das receitas que marcaram gerações.</p>
+          <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--primario">Saiba mais pelo WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTATO ========== -->
+    <section class="contato" id="contato">
+      <div class="secao__container">
+        <h2 class="secao__titulo">Vamos conversar?</h2>
+        <p class="secao__subtitulo">Fale com a gente pelo WhatsApp e acompanhe as novidades pelo Instagram.</p>
+
+        <div class="contato__grid">
+          <div class="info-card">
+            <div class="info-card__icone">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3 class="info-card__titulo">Horário de atendimento</h3>
+            <p class="info-card__texto">Segunda a sábado: 09:00 às 21:00</p>
+            <p class="info-card__texto">Domingo: 09:00 às 14:00</p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card__icone">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <h3 class="info-card__titulo">Onde estamos</h3>
+            <p class="info-card__texto">R. Barone Mercadante, 60 - Rio Pequeno, São Paulo - SP, 05399-010</p>
+            <a href="https://maps.app.goo.gl/DxqLyrvYUpD4UkJU8" target="_blank" rel="noopener noreferrer" class="btn btn--maps">
+              <svg class="btn__icone" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+              Ver localização no Google Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="contato__botoes">
+          <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">
+            <svg class="btn__icone" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar pelo WhatsApp
+          </a>
+          <a href="https://www.instagram.com/saboor_da_roca/" target="_blank" rel="noopener noreferrer" class="btn btn--instagram">
+            <svg class="btn__icone" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Siga no Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__logo">
+        <span class="footer__logo-nome">Sabor da Roça</span>
+        <p class="footer__frase">Um pedacinho do sertão pertinho de você.</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://www.instagram.com/saboor_da_roca/" target="_blank" rel="noopener noreferrer" aria-label="Siga a Sabor da Roça no Instagram">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+      <p class="footer__copy">&copy; <span id="footer-ano"></span> Sabor da Roça. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
