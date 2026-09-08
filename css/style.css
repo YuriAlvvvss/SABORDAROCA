@@ -214,6 +214,14 @@ ul {
   opacity: 0.9;
 }
 
+.btn--google {
+  background-color: #4285F4;
+  color: #fff;
+}
+.btn--google:hover {
+  background-color: #3367D6;
+}
+
 .btn:active {
   transform: translateY(1px);
 }
@@ -1212,6 +1220,11 @@ img.imagem--indisponivel {
 .depoimento-card__local {
   font-size: 0.8rem;
   opacity: 0.65;
+}
+
+.depoimentos__cta {
+  text-align: center;
+  margin-top: 2.5rem;
 }
 
 /* ========================================
