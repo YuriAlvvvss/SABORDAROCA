@@ -214,14 +214,6 @@ ul {
   opacity: 0.9;
 }
 
-.btn--email {
-  background-color: var(--cor-terra-escura);
-  color: var(--cor-texto-claro);
-}
-.btn--email:hover {
-  background-color: var(--cor-terra);
-}
-
 .btn:active {
   transform: translateY(1px);
 }
@@ -1002,7 +994,7 @@ img.imagem--indisponivel {
   }
 
   .contato__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
