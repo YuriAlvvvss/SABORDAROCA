@@ -74,6 +74,7 @@ body {
   background-image: var(--textura-pontilhada);
   background-size: 18px 18px;
   overflow-x: hidden;
+  overflow-x: clip; /* clip não cria caixa de rolagem e preserva o header sticky */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -361,7 +362,7 @@ img.imagem--indisponivel {
   background-image:
     radial-gradient(ellipse at 30% 50%, rgba(232, 128, 5, 0.06), transparent 50%),
     linear-gradient(115deg, rgba(255, 247, 232, 0.98) 0%, rgba(255, 247, 232, 0.9) 48%, rgba(244, 230, 206, 0.72) 100%);
-  padding: 6rem 0 7rem;
+  padding: 3.5rem 0 4rem;
   min-height: 60vh;
   display: flex;
   align-items: center;
@@ -416,6 +417,8 @@ img.imagem--indisponivel {
   padding: 0.3rem 0.9rem;
   border-radius: 20px;
   margin-bottom: 1rem;
+  max-width: 100%;
+  line-height: 1.4;
 }
 
 .hero__titulo {
@@ -572,8 +575,8 @@ img.imagem--indisponivel {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border: none;
   border-radius: 50%;
   background-color: rgba(84, 36, 21, 0.78);
@@ -605,11 +608,12 @@ img.imagem--indisponivel {
 .carrossel__pontos {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
   margin-top: 1rem;
 }
 
 .carrossel__ponto {
+  position: relative;
   width: 10px;
   height: 10px;
   border: 2px solid var(--cor-terra);
@@ -618,6 +622,13 @@ img.imagem--indisponivel {
   cursor: pointer;
   padding: 0;
   transition: background-color var(--transicao), transform var(--transicao);
+}
+
+/* Amplia a área de toque sem alterar o visual (sem sobrepor o vizinho) */
+.carrossel__ponto::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
 }
 
 .carrossel__ponto:hover {
@@ -632,6 +643,11 @@ img.imagem--indisponivel {
 .carrossel__ponto:focus-visible {
   outline: 3px solid var(--cor-dourado);
   outline-offset: 2px;
+}
+
+.carrossel:focus-visible {
+  outline: 3px solid var(--cor-dourado);
+  outline-offset: 4px;
 }
 
 /* Swipe assist */
@@ -741,6 +757,7 @@ img.imagem--indisponivel {
 .contato__botoes {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 1rem;
   max-width: 480px;
   margin: 0 auto;
@@ -875,6 +892,13 @@ img.imagem--indisponivel {
   text-align: center;
 }
 
+.footer__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .footer__logo-nome {
   font-family: var(--fonte-titulo);
   font-size: 1.25rem;
@@ -966,7 +990,7 @@ img.imagem--indisponivel {
 
   .hero {
     min-height: 70vh;
-    padding: 8rem 0 9rem;
+    padding: 5rem 0 6rem;
   }
 
   .hero__container {
@@ -987,18 +1011,11 @@ img.imagem--indisponivel {
     justify-content: center;
   }
 
-  .sobre__container {
-    flex-direction: row;
-    text-align: left;
-  }
-
-  .sobre__texto {
-    text-align: left;
-  }
-
   .contato__botoes {
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    max-width: 640px;
   }
 
   .contato__grid {
@@ -1010,28 +1027,17 @@ img.imagem--indisponivel {
    RESPONSIVO — Desktop (1280px+)
    ======================================== */
 @media (min-width: 1280px) {
-  .diferenciais__grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
   .carrossel {
     max-width: 700px;
   }
 }
 
 /* ========================================
-   RESPONSIVO — Mobile (<768px)
+   RESPONSIVO — Mobile e tablet retrato (<1024px):
+   menu hamburger + ajustes de componentes
+   (7 links + CTA não cabem lado a lado abaixo de 1024px)
    ======================================== */
-@media (max-width: 767px) {
-  .hero__botoes {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .hero__botoes .btn {
-    width: 100%;
-  }
-
+@media (max-width: 1023px) {
   .carrossel {
     max-width: 100%;
   }
@@ -1071,8 +1077,7 @@ img.imagem--indisponivel {
   .header__nav {
     position: fixed;
     top: var(--header-altura);
-    left: 100%;
-    right: auto;
+    left: 0;
     bottom: 0;
     width: 100%;
     z-index: 101;
@@ -1080,15 +1085,15 @@ img.imagem--indisponivel {
     background-color: var(--cor-verde);
     padding: 2rem 1.25rem;
     gap: 2rem;
-    transform: none;
-    transition: left var(--transicao), visibility var(--transicao);
+    transform: translateX(100%);
+    transition: transform var(--transicao), visibility var(--transicao);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     visibility: hidden;
   }
 
   .header__nav--aberto {
-    left: 0;
+    transform: none;
     visibility: visible;
   }
 
@@ -1106,7 +1111,24 @@ img.imagem--indisponivel {
     width: 100%;
     justify-content: center;
   }
+}
 
+/* Empilha os CTAs do hero em largura total só no mobile pequeno —
+   no tablet (768px+) ficam lado a lado e centralizados. */
+@media (max-width: 767px) {
+  .hero__botoes {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__botoes .btn {
+    width: 100%;
+  }
+}
+
+/* Horário empilhado só em telas estreitas — a partir de 560px
+   cabe lado a lado com o pontilhado. */
+@media (max-width: 559px) {
   .horario__linha {
     flex-direction: column;
     align-items: flex-start;
@@ -1326,7 +1348,26 @@ img.imagem--indisponivel {
    ======================================== */
 @media (min-width: 768px) {
   .depoimentos__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Com 3 cards, o último ocupa a linha inteira no tablet */
+  .depoimentos__grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 480px;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .depoimentos__grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .depoimentos__grid > :last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: none;
   }
 }
 
@@ -1334,4 +1375,180 @@ img.imagem--indisponivel {
   .depoimentos__grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* ========================================
+   CONVERSÃO — Hero com imagem + status + CTA flutuante
+   ======================================== */
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-verde);
+  background-color: rgba(55, 64, 1, 0.08);
+  border: 1px solid rgba(55, 64, 1, 0.15);
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.hero__status-bolinha {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--cor-dourado);
+  flex-shrink: 0;
+}
+
+.hero__status[data-estado="aberto"] .hero__status-bolinha {
+  background-color: #2e7d32;
+}
+
+.hero__status[data-estado="fechado"] {
+  color: var(--cor-terra-escura);
+}
+
+.hero__status[data-estado="fechado"] .hero__status-bolinha {
+  background-color: var(--cor-avermelhado);
+}
+
+.hero__imagem {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--sombra-flutuante);
+  border: 8px solid rgba(255, 247, 232, 0.9);
+}
+
+.hero__imagem img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.produtos__cta {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.whatsapp-flutuante {
+  position: fixed;
+  right: 1.25rem;
+  right: calc(1.25rem + env(safe-area-inset-right, 0px));
+  bottom: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  transition: transform var(--transicao), background-color var(--transicao);
+}
+
+.whatsapp-flutuante:hover {
+  background-color: #1da851;
+  transform: scale(1.08);
+}
+
+.whatsapp-flutuante:focus-visible {
+  outline: 3px solid var(--cor-dourado);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  .diferenciais__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero {
+    padding: 6rem 0 7rem;
+  }
+
+  .hero__container {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .hero__texto {
+    text-align: left;
+    flex: 1.1;
+  }
+
+  .hero__subtitulo {
+    margin-left: 0;
+  }
+
+  .hero__botoes {
+    justify-content: flex-start;
+  }
+
+  .hero__imagem {
+    flex: 0.9;
+  }
+
+  .sobre__container {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .sobre__texto {
+    text-align: left;
+  }
+}
+
+/* ========================================
+   ACESSIBILIDADE — texto só para leitor de tela
+   ======================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   CARROSSEL — botão pausar
+   ======================================== */
+.carrossel__btn--pausa {
+  top: 0.75rem;
+  right: 0.75rem;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  width: 40px;
+  height: 40px;
+}
+.carrossel__btn--pausa:hover {
+  transform: scale(1.08);
+}
+.carrossel__btn--pausa .icone-retomar[hidden] {
+  display: none;
+}
+
+/* ========================================
+   FOOTER — privacidade
+   ======================================== */
+.footer__privacidade {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  max-width: 560px;
 }

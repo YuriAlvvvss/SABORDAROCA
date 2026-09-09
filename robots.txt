@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yurialvvvss.github.io/SABORDAROCA/sitemap.xml
+Sitemap: https://sabordaroca.me/sitemap.xml

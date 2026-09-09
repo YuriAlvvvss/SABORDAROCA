@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YJWQZXZ8C"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9YJWQZXZ8C');
-  </script>
+  <!-- Privacidade: só Simple Analytics (anônimo, sem cookies). Sem Google Analytics. -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Sabor da Roça — comida artesanal com sabores do sertão em Rio Pequeno, São Paulo/SP. Ingredientes selecionados e receitas de família.">
@@ -16,37 +9,39 @@
   <meta name="theme-color" content="#374001">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yurialvvvss.github.io/SABORDAROCA/">
+  <link rel="canonical" href="https://sabordaroca.me/">
   <link rel="icon" href="./assets/favicon.png" type="image/png">
   <link rel="manifest" href="./manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Sabor da Roça">
-  <link rel="preload" as="image" href="./assets/images/sobre.webp" fetchpriority="high">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Sabor da Roça">
   <meta property="og:title" content="Sabor da Roça — Um pedacinho do sertão pertinho de você">
   <meta property="og:description" content="Comida artesanal com ingredientes selecionados e receitas de família em Rio Pequeno, São Paulo/SP.">
-  <meta property="og:url" content="https://yurialvvvss.github.io/SABORDAROCA/">
-  <meta property="og:image" content="https://yurialvvvss.github.io/SABORDAROCA/assets/images/foto1.webp">
-  <meta property="og:image:alt" content="Comida caseira em uma mesa rústica">
-  <meta property="og:image:type" content="image/webp">
-  <meta property="og:image:width" content="600">
-  <meta property="og:image:height" content="400">
+  <meta property="og:url" content="https://sabordaroca.me/">
+  <meta property="og:image" content="https://sabordaroca.me/assets/og-cover.jpg">
+  <meta property="og:image:alt" content="Prateleira da loja Sabor da Roça com molhos, doces, polvilho e conservas">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sabor da Roça — Um pedacinho do sertão pertinho de você">
   <meta name="twitter:description" content="Comida artesanal com ingredientes selecionados e receitas de família em Rio Pequeno, São Paulo/SP.">
-  <meta name="twitter:image" content="https://yurialvvvss.github.io/SABORDAROCA/assets/images/foto1.webp">
-  <meta name="twitter:image:alt" content="Comida caseira em uma mesa rústica">
+  <meta name="twitter:image" content="https://sabordaroca.me/assets/og-cover.jpg">
+  <meta name="twitter:image:alt" content="Prateleira da loja Sabor da Roça com molhos, doces, polvilho e conservas">
   <title>Sabor da Roça — Um pedacinho do sertão pertinho de você</title>
   <!-- Critical CSS — renderiza header e hero sem esperar o CSS externo -->
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:clip}
-    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:1rem;line-height:1.6;color:#5A1903;background-color:#F4E6CE;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:1rem;line-height:1.6;color:#5A1903;background-color:#F4E6CE;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
     img{display:block;max-width:100%;height:auto}
     a{color:inherit;text-decoration:none}
+    ul{list-style:none}
     .skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;padding:.75rem 1.5rem;background-color:#E86531;color:#FFF7E8;font-weight:700;font-size:1rem;border-radius:0 0 8px 8px;box-shadow:0 24px 50px rgba(90,25,3,.22);transition:top .2s ease}
     .skip-link:focus{top:0;outline:3px solid #E88005;outline-offset:2px}
     .header{position:sticky;top:0;z-index:100;background-color:rgba(55,64,1,.97);color:#FFF7E8;box-shadow:0 8px 20px rgba(90,25,3,.1);border-bottom:1px solid rgba(232,128,5,.25);backdrop-filter:blur(12px)}
@@ -54,26 +49,49 @@
     .header__logo{display:flex;flex-direction:column;line-height:1.2}
     .header__logo-nome{font-family:Georgia,'Times New Roman',serif;font-size:1.45rem;font-weight:700;color:#FFF7E8}
     .header__logo-sub{font-size:.75rem;opacity:.8}
-    .hero{position:relative;isolation:isolate;overflow:hidden;background-color:#FFF7E8;background-image:radial-gradient(ellipse at 30% 50%,rgba(232,128,5,.06),transparent 50%),linear-gradient(115deg,rgba(255,247,232,.98) 0%,rgba(255,247,232,.9) 48%,rgba(244,230,206,.72) 100%);padding:6rem 0 7rem;min-height:60vh;display:flex;align-items:center}
+    .header__nav{display:flex;align-items:center;gap:1.5rem}
+    .header__menu{display:flex;gap:1.25rem;list-style:none}
+    .header__link{font-size:.95rem;padding:.6rem 0;color:#FFF7E8}
+    .btn--header{display:inline-flex;align-items:center;padding:.5rem 1.1rem;font-size:.9rem;font-weight:600;background-color:#FFF7E8;color:#374001;border-radius:8px;min-height:44px}
+    .hero{position:relative;isolation:isolate;overflow:hidden;background-color:#FFF7E8;background-image:radial-gradient(ellipse at 30% 50%,rgba(232,128,5,.06),transparent 50%),linear-gradient(115deg,rgba(255,247,232,.98) 0%,rgba(255,247,232,.9) 48%,rgba(244,230,206,.72) 100%);padding:3.5rem 0 4rem;min-height:60vh;display:flex;align-items:center}
     .hero__container{display:flex;flex-direction:column;gap:2rem;max-width:1120px;width:100%;margin:0 auto;padding:0 1.25rem;align-items:center}
     .hero__texto{text-align:center;max-width:720px;width:100%}
+    .hero__etiqueta{display:inline-block;color:#E86531;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem}
+    .hero__localizacao{display:inline-block;font-size:.9rem;color:#374001;background-color:rgba(55,64,1,.08);border:1px solid rgba(55,64,1,.15);padding:.3rem .9rem;border-radius:20px;margin-bottom:1rem;max-width:100%;line-height:1.4}
+    .hero__status{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;font-size:.85rem;font-weight:600;color:#374001;background-color:rgba(55,64,1,.08);border:1px solid rgba(55,64,1,.15);padding:.3rem .9rem;border-radius:20px;margin-bottom:1rem;max-width:100%;line-height:1.4}
     .hero__titulo{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2.15rem,5vw,4.25rem);color:#5A1903;line-height:1.2;margin-bottom:1rem}
     .hero__subtitulo{font-size:clamp(1rem,2.5vw,1.15rem);color:#5A1903;opacity:.85;max-width:540px;margin:0 auto 2.5rem}
     .hero__botoes{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .hero__imagem{width:100%;max-width:380px;border-radius:16px;overflow:hidden;box-shadow:0 24px 50px rgba(90,25,3,.22);border:8px solid rgba(255,247,232,.9)}
+    .hero__status-bolinha{width:8px;height:8px;border-radius:50%;background-color:#E88005;flex-shrink:0}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.6rem;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:1rem;font-weight:600;border:2px solid transparent;border-radius:8px;cursor:pointer;min-height:44px;min-width:44px;text-align:center}
     .btn--primario{background-color:#E86531;color:#FFF7E8;box-shadow:0 8px 18px rgba(232,101,49,.22)}
     .btn--secundario{background-color:transparent;color:#E86531;border-color:#E86531}
     .header__hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem;min-height:44px;min-width:44px}
+    .header__hamburger-linha{display:block;width:24px;height:2px;background-color:#FFF7E8;border-radius:2px}
+    @media (max-width:1023px){
+      .header__hamburger{display:flex}
+      .header__nav{position:fixed;top:72px;left:0;bottom:0;width:100%;z-index:101;flex-direction:column;background-color:#374001;padding:2rem 1.25rem;gap:2rem;overflow-y:auto;visibility:hidden;transform:translateX(100%)}
+      .header__nav--aberto{transform:none;visibility:visible}
+      .header__menu{flex-direction:column;gap:1rem;align-items:center}
+      .header__link{font-size:1.15rem}
+      .btn--header{width:100%;justify-content:center}
+    }
+    @media (max-width:767px){
+      .hero__botoes{flex-direction:column;width:100%}
+      .hero__botoes .btn{width:100%}
+    }
   </style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "GroceryStore",
       "name": "Sabor da Roça",
       "description": "Comida artesanal com ingredientes selecionados e receitas de família em Rio Pequeno, São Paulo.",
-      "url": "https://yurialvvvss.github.io/SABORDAROCA/",
-      "image": "https://yurialvvvss.github.io/SABORDAROCA/assets/images/foto1.webp",
+      "url": "https://sabordaroca.me/",
+      "image": "https://sabordaroca.me/assets/og-cover.jpg",
       "telephone": "+55 11 92134-7467",
+      "priceRange": "R$",
       "sameAs": [
         "https://www.instagram.com/saboor_da_roca/",
         "https://wa.me/5511921347467"
@@ -99,10 +117,85 @@
           "opens": "09:00",
           "closes": "14:00"
         }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "3",
+        "bestRating": "5"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Simone Lopes Ferreira" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Atendimento maravilhoso! Muitas variedades de produtos e tudo sempre fresquinho! Indico com certeza."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Luciano Lopes Souza" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Ótimos preços."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Yuri Alves" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Ótimo atendimento, fui bem recebido e os produtos são muito bons e frescos. Recomendo!"
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quais formas de pagamento vocês aceitam?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Aceitamos PIX, cartão de crédito/débito, vale-alimentação/refeição e dinheiro." }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona a retirada?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fazemos retirada no balcão, faça seu pedido por WhatsApp e guardamos para você!" }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a área de atendimento?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Estamos atendendo em R. Barone Mercadante, 60 - Rio Pequeno, São Paulo - SP, 05399-010" }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês fazem entrega ou só retirada?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Hoje trabalhamos com retirada no balcão. Faça seu pedido pelo WhatsApp que deixamos tudo separado para você!" }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona a compra a granel?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Você escolhe o produto e a quantidade, e pesamos na hora. Chame no WhatsApp para saber as opções do dia." }
+        }
       ]
     }
   </script>
   <link rel="stylesheet" href="./css/style.css">
+  <noscript>
+    <style>
+      /* Sem JS: menu empilhado no cabeçalho em vez de off-canvas (inacessível sem JS). */
+      .hero__status{display:none}
+      .carrossel__pista{overflow-x:auto}
+      .carrossel__btn,.carrossel__pontos{display:none}
+      @media (max-width:1023px){
+        .header__container{flex-wrap:wrap;height:auto;min-height:72px;padding-top:.75rem;padding-bottom:.75rem;row-gap:.5rem}
+        .header__hamburger{display:none !important}
+        .header__nav{position:static;visibility:visible;transform:none;width:100%;flex-direction:column;align-items:stretch;gap:1rem;padding:.25rem 0 .5rem;background:transparent;overflow:visible}
+        .header__menu{flex-direction:column;align-items:flex-start;gap:.15rem}
+        .header__link{font-size:1rem}
+        .btn--header{justify-content:center}
+      }
+    </style>
+  </noscript>
 </head>
 <body>
 
@@ -126,7 +219,7 @@
           <li><a href="#faq" class="header__link">FAQ</a></li>
           <li><a href="#contato" class="header__link">Contato</a></li>
         </ul>
-        <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--header">Fale com a gente</a>
+        <a href="https://wa.me/5511921347467?text=Ol%C3%A1!%20Vim%20pelo%20site%20Sabor%20da%20Ro%C3%A7a%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer" class="btn btn--header">Fale com a gente</a>
       </nav>
 
       <button class="header__hamburger" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
@@ -145,10 +238,11 @@
         <div class="hero__texto">
           <p class="hero__etiqueta">Sabor, tradição e afeto</p>
           <p class="hero__localizacao">📍 R. Barone Mercadante, 60 - Rio Pequeno, São Paulo - SP</p>
+          <p class="hero__status" id="status-aberto" role="status"><span class="hero__status-bolinha" aria-hidden="true"></span><span id="status-aberto-texto">Verificando horário de funcionamento…</span></p>
           <h1 class="hero__titulo">O gosto de casa, feito com as mãos da roça</h1>
           <p class="hero__subtitulo">Receitas que nasceram no sertão e chegaram até você — feitas com ingredientes de verdade e o cuidado de quem cozinha com o coração.</p>
           <div class="hero__botoes">
-            <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--primario">
+            <a href="https://wa.me/5511921347467?text=Ol%C3%A1!%20Vim%20pelo%20site%20Sabor%20da%20Ro%C3%A7a%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer" class="btn btn--primario">
               <svg class="btn__icone" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Fale pelo WhatsApp
             </a>
@@ -157,6 +251,9 @@
               Conheça o Instagram
             </a>
           </div>
+        </div>
+        <div class="hero__imagem">
+          <img src="./assets/images/sobre.webp" alt="Logotipo Casa do Norte Sabor da Roça com ilustração do sertão" loading="eager" fetchpriority="high" decoding="async" width="533" height="800">
         </div>
       </div>
     </section>
@@ -222,41 +319,42 @@
         <p class="secao__subtitulo">Conheça algumas das nossas especialidades. Deslize para ver mais.</p>
         <p class="produtos__granel"><strong>Produtos a granel</strong> — Temperos, Grãos, Carnes, Queijos e muito mais. Confira as opções pelo WhatsApp!</p>
 
-        <div class="carrossel" role="region" aria-label="Galeria de produtos" aria-roledescription="carrossel">
+        <div class="carrossel" role="region" aria-label="Galeria de produtos" aria-roledescription="carrossel" tabindex="0">
+          <p class="sr-only" aria-live="polite" id="carrossel-status">Slide 1 de 11</p>
           <div class="carrossel__pista">
             <div class="carrossel__slides">
               <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 1 de 11">
-                <img src="./assets/images/foto1.webp" alt="Bolo de fubá caseiro com cobertura de goiabada, servido em prato rústico de barro" loading="lazy" decoding="async" width="600" height="450">
+                <img src="./assets/images/foto1.webp" alt="Dispensers com farinhas, grãos e temperos a granel na loja Sabor da Roça" loading="lazy" decoding="async" width="449" height="800">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 2 de 11">
-                <img src="./assets/images/foto2.webp" alt="Cesta de temperos secos e ervas aromáticas, com rótulos artesanais de papel" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 2 de 11" aria-hidden="true">
+                <img src="./assets/images/foto2.webp" alt="Interior da loja com prateleiras de temperos a granel e produtos empacotados" loading="lazy" decoding="async" width="449" height="800">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 3 de 11">
-                <img src="./assets/images/foto3.webp" alt="Pães artesanais recém-assados em cesto de vime, com farinha de trigo sobre a mesa" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 3 de 11" aria-hidden="true">
+                <img src="./assets/images/foto3.webp" alt="Potes transparentes com temperos, grãos e especiarias a granel" loading="lazy" decoding="async" width="449" height="800">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 4 de 11">
-                <img src="./assets/images/foto4.webp" alt="Combos de doces típicos do sertão, incluindo cocada e paçoca, embalados artesanalmente" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 4 de 11" aria-hidden="true">
+                <img src="./assets/images/foto4.webp" alt="Dispensers de farinhas e temperos a granel na loja" loading="lazy" decoding="async" width="449" height="800">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 5 de 11">
-                <img src="./assets/images/foto5.webp" alt="Manteiga de garrafa e queijo minas fresco, servidos com pão na chapa" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 5 de 11" aria-hidden="true">
+                <img src="./assets/images/foto5.webp" alt="Geladeira com bebidas e sacos de carvão de 2 kg e 5 kg à venda" loading="lazy" decoding="async" width="449" height="800">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 6 de 11">
-                <img src="./assets/images/foto6.webp" alt="Geleias artesanais de frutas tropicais em potes de vidro com lacres de pano" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 6 de 11" aria-hidden="true">
+                <img src="./assets/images/foto6.webp" alt="Prateleira com molhos, doces, polvilho e conservas" loading="lazy" decoding="async" width="800" height="449">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 7 de 11">
-                <img src="./assets/images/foto7.webp" alt="Quadro de cafés da manhã sertanejos com bolo, café coado e frutas frescas" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 7 de 11" aria-hidden="true">
+                <img src="./assets/images/foto7.webp" alt="Potes com castanhas, temperos e farinhas a granel" loading="lazy" decoding="async" width="800" height="449">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 8 de 11">
-                <img src="./assets/images/foto8.webp" alt="Banquinho rústico com cestos de palha contendo produtos da roça, em ambiente de loja artesanal" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 8 de 11" aria-hidden="true">
+                <img src="./assets/images/foto8.webp" alt="Fachada da loja Sabor da Roça com mesas de produtos a granel na calçada" loading="lazy" decoding="async" width="449" height="800">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 9 de 11">
-                <img src="./assets/images/foto9.webp" alt="Produto artesanal da Sabor da Roça" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 9 de 11" aria-hidden="true">
+                <img src="./assets/images/foto9.webp" alt="Peça de carne bovina fresca com capa de gordura no balcão" loading="lazy" decoding="async" width="800" height="449">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 10 de 11">
-                <img src="./assets/images/foto10.webp" alt="Produto artesanal da Sabor da Roça" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 10 de 11" aria-hidden="true">
+                <img src="./assets/images/foto10.webp" alt="Peças de carne bovina com marmoreio em balcão refrigerado" loading="lazy" decoding="async" width="600" height="800">
               </div>
-              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 11 de 11">
-                <img src="./assets/images/foto11.webp" alt="Produto artesanal da Sabor da Roça" loading="lazy" decoding="async" width="600" height="450">
+              <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="Slide 11 de 11" aria-hidden="true">
+                <img src="./assets/images/foto11.webp" alt="Queijo branco em peça inteira e metade sobre tábua de madeira" loading="lazy" decoding="async" width="800" height="600">
               </div>
             </div>
           </div>
@@ -267,23 +365,31 @@
           <button class="carrossel__btn carrossel__btn--proximo" aria-label="Próximo slide" type="button">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
+          <button class="carrossel__btn carrossel__btn--pausa" aria-label="Pausar apresentação automática" aria-pressed="false" type="button">
+            <svg class="icone-pausar" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+            <svg class="icone-retomar" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" hidden><path d="M8 5v14l11-7z"/></svg>
+          </button>
 
-          <div class="carrossel__pontos" role="tablist" aria-label="Navegação do carrossel">
-            <button class="carrossel__ponto carrossel__ponto--ativo" role="tab" aria-selected="true" aria-label="Ir para slide 1" data-indice="0" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 2" data-indice="1" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 3" data-indice="2" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 4" data-indice="3" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 5" data-indice="4" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 6" data-indice="5" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 7" data-indice="6" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 8" data-indice="7" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 9" data-indice="8" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 10" data-indice="9" type="button"></button>
-            <button class="carrossel__ponto" role="tab" aria-selected="false" aria-label="Ir para slide 11" data-indice="10" type="button"></button>
+          <div class="carrossel__pontos" role="group" aria-label="Navegação do carrossel">
+            <button class="carrossel__ponto carrossel__ponto--ativo" aria-current="true" aria-label="Ir para slide 1" data-indice="0" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 2" data-indice="1" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 3" data-indice="2" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 4" data-indice="3" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 5" data-indice="4" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 6" data-indice="5" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 7" data-indice="6" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 8" data-indice="7" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 9" data-indice="8" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 10" data-indice="9" type="button"></button>
+            <button class="carrossel__ponto" aria-current="false" aria-label="Ir para slide 11" data-indice="10" type="button"></button>
           </div>
         </div>
 
         <p class="produtos__aviso">Consulte a Sabor da Roça para conhecer as opções disponíveis.</p>
+
+        <div class="produtos__cta">
+          <a href="https://wa.me/5511921347467?text=Ol%C3%A1!%20Quero%20receber%20o%20card%C3%A1pio%20da%20Sabor%20da%20Ro%C3%A7a." target="_blank" rel="noopener noreferrer" class="btn btn--primario">Pedir cardápio no WhatsApp</a>
+        </div>
       </div>
     </section>
 
@@ -291,13 +397,13 @@
     <section class="sobre" id="sobre">
       <div class="sobre__container">
         <div class="sobre__imagem">
-          <img src="./assets/images/sobre.webp" alt="Preparo de alimento artesanal em ambiente rústico" loading="lazy" decoding="async" width="500" height="400">
+          <img src="./assets/images/sobre.webp" alt="Logotipo Casa do Norte Sabor da Roça com ilustração do sertão" loading="lazy" decoding="async" width="533" height="800">
         </div>
         <div class="sobre__texto">
           <h2 class="secao__titulo">A nossa história</h2>
           <p>Tudo começou com uma ideia de levar o sabor do sertão até quem mora longe dele. A <strong>Sabor da Roça</strong> nasceu em Rio Pequeno com uma ideia simples: oferecer produtos de verdade!</p>
           <p>Cada produto que sai da nossa loja carrega memórias de mesa cheia, de aroma que invade a casa no domingo de manhã. A gente acredita que alimentar é um ato de cuidado, e por isso tratamos cada cliente como se fosse nossa própria família.</p>
-          <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--primario">Saiba mais pelo WhatsApp</a>
+          <a href="https://wa.me/5511921347467?text=Ol%C3%A1!%20Vim%20pelo%20site%20Sabor%20da%20Ro%C3%A7a%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer" class="btn btn--primario">Saiba mais pelo WhatsApp</a>
         </div>
       </div>
     </section>
@@ -345,7 +451,6 @@
 
           <article class="depoimento-card">
             <div class="depoimento-card__estrelas" aria-label="5 de 5 estrelas">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -401,6 +506,19 @@
             </div>
           </details>
 
+          <details class="faq__item">
+            <summary class="faq__pergunta">Vocês fazem entrega ou só retirada?</summary>
+            <div class="faq__resposta">
+              <p>Hoje trabalhamos com retirada no balcão. Faça seu pedido pelo WhatsApp que deixamos tudo separado para você!</p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__pergunta">Como funciona a compra a granel?</summary>
+            <div class="faq__resposta">
+              <p>Você escolhe o produto e a quantidade, e pesamos na hora. Chame no WhatsApp para saber as opções do dia.</p>
+            </div>
+          </details>
 
         </div>
       </div>
@@ -455,7 +573,7 @@
         <div class="contato__divisor" aria-hidden="true"></div>
 
         <div class="contato__botoes">
-          <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">
+          <a href="https://wa.me/5511921347467?text=Ol%C3%A1!%20Vim%20pelo%20site%20Sabor%20da%20Ro%C3%A7a%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">
             <svg class="btn__icone" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Falar pelo WhatsApp
           </a>
@@ -477,7 +595,7 @@
         <p class="footer__frase">Um pedacinho do sertão pertinho de você.</p>
       </div>
       <div class="footer__links">
-        <a href="https://wa.me/5511921347467" target="_blank" rel="noopener noreferrer" aria-label="Fale com a Sabor da Roça no WhatsApp">
+        <a href="https://wa.me/5511921347467?text=Ol%C3%A1!%20Vim%20pelo%20site%20Sabor%20da%20Ro%C3%A7a%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer" aria-label="Fale com a Sabor da Roça no WhatsApp">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
         <a href="https://www.instagram.com/saboor_da_roca/" target="_blank" rel="noopener noreferrer" aria-label="Siga a Sabor da Roça no Instagram">
@@ -485,8 +603,13 @@
         </a>
       </div>
       <p class="footer__copy">&copy; <span id="footer-ano"></span> Sabor da Roça. Todos os direitos reservados.</p>
+      <p class="footer__privacidade">Medição anônima de visitas, sem cookies.</p>
     </div>
   </footer>
+
+  <a href="https://wa.me/5511921347467?text=Ol%C3%A1!%20Vim%20pelo%20site%20Sabor%20da%20Ro%C3%A7a%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer" class="whatsapp-flutuante" aria-label="Conversar com a Sabor da Roça no WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
   <script src="./js/script.js" defer></script>
   <!-- 100% privacy-first analytics -->

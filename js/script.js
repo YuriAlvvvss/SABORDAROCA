@@ -33,13 +33,16 @@
     });
   });
 
+  /* Ponto de quebra do menu mobile — deve acompanhar o CSS (max-width: 1023px). */
+  var BREAKPOINT_MENU_MOBILE = 1024;
+
   function atualizarEstadoMenu(aberto) {
     if (!hamburgerBtn || !mainNav) {
       return;
     }
 
     hamburgerBtn.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
-    const menuMobile = window.innerWidth < 768;
+    const menuMobile = window.innerWidth < BREAKPOINT_MENU_MOBILE;
     mainNav.setAttribute('aria-hidden', String(menuMobile && !aberto));
 
     if ('inert' in mainNav) {
@@ -55,19 +58,22 @@
     mainNav.classList.add('header__nav--aberto');
     atualizarEstadoMenu(true);
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     const primeiroLink = mainNav.querySelector('.header__link');
     if (primeiroLink) {
       primeiroLink.focus();
     }
   }
 
-  function fecharMenu() {
+  function fecharMenu(restaurarFoco) {
+    var deveRestaurarFoco = restaurarFoco !== false;
     hamburgerBtn.classList.remove('header__hamburger--ativo');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
     mainNav.classList.remove('header__nav--aberto');
     atualizarEstadoMenu(false);
     document.body.style.overflow = '';
-    if (ultimoElementoFocado && typeof ultimoElementoFocado.focus === 'function') {
+    document.documentElement.style.overflow = '';
+    if (deveRestaurarFoco && ultimoElementoFocado && typeof ultimoElementoFocado.focus === 'function') {
       ultimoElementoFocado.focus();
     }
     ultimoElementoFocado = null;
@@ -82,7 +88,9 @@
     atualizarEstadoMenu(false);
     hamburgerBtn.addEventListener('click', toggleMenu);
 
-    navLinks.forEach(function (link) {
+    /* Fecha o menu ao clicar em QUALQUER link do nav (inclui o CTA do WhatsApp,
+       que abre em nova aba e antes mantinha a página travada com overflow hidden). */
+    mainNav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', fecharMenu);
     });
 
@@ -103,8 +111,9 @@
     });
 
     window.addEventListener('resize', debounce(function () {
-      if (window.innerWidth >= 768 && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
-        fecharMenu();
+      if (window.innerWidth >= BREAKPOINT_MENU_MOBILE && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+        /* Fecha sem roubar o foco durante o redimensionamento. */
+        fecharMenu(false);
         return;
       }
 
@@ -114,7 +123,7 @@
 
   /* ---------- Entrada suave e seção ativa ---------- */
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const elementosRevelados = document.querySelectorAll('.hero__texto, .diferencial-card, .carrossel, .sobre__imagem, .sobre__texto, .depoimento-card, .faq__item, .info-card, .contato__divisor, .contato__botoes');
+  const elementosRevelados = document.querySelectorAll('.hero__texto, .hero__imagem, .diferencial-card, .carrossel, .sobre__imagem, .sobre__texto, .depoimento-card, .faq__item, .info-card, .contato__divisor, .contato__botoes');
 
   if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     elementosRevelados.forEach(function (elemento) {
@@ -158,6 +167,60 @@
     });
   }
 
+  /* ---------- Status "Aberto agora" (fuso America/Sao_Paulo) ---------- */
+  (function atualizarStatusAberto() {
+    var el = document.getElementById('status-aberto');
+    var texto = document.getElementById('status-aberto-texto');
+    if (!el || !texto) {
+      return;
+    }
+
+    /* Usa o horário da loja, não do visitante (turista em outro fuso via status errado). */
+    function partesEmSP(data) {
+      try {
+        var fmt = new Intl.DateTimeFormat('pt-BR', {
+          timeZone: 'America/Sao_Paulo',
+          weekday: 'short',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: false
+        });
+        var partes = fmt.formatToParts(data);
+        var out = { diaSemana: '', hora: 0, minuto: 0 };
+        partes.forEach(function (p) {
+          if (p.type === 'weekday') out.diaSemana = p.value;
+          if (p.type === 'hour') out.hora = parseInt(p.value, 10);
+          if (p.type === 'minute') out.minuto = parseInt(p.value, 10);
+        });
+        return out;
+      } catch (e) {
+        return { diaSemana: '', hora: data.getHours(), minuto: data.getMinutes(), fallback: true, dia: data.getDay() };
+      }
+    }
+
+    var agora = new Date();
+    var sp = partesEmSP(agora);
+    var ehDomingo;
+    if (sp.fallback) {
+      ehDomingo = sp.dia === 0;
+    } else {
+      ehDomingo = sp.diaSemana.toLowerCase().indexOf('dom') === 0;
+    }
+    var hora = sp.hora + sp.minuto / 60;
+    var abre = 9;
+    var fecha = ehDomingo ? 14 : 21;
+    var aberto = hora >= abre && hora < fecha;
+
+    function fmt(h) {
+      return String(h).padStart(2, '0') + 'h';
+    }
+
+    el.setAttribute('data-estado', aberto ? 'aberto' : 'fechado');
+    texto.textContent = aberto
+      ? 'Aberto agora · fecha às ' + fmt(fecha)
+      : 'Fechado agora · abre às ' + fmt(abre);
+  })();
+
   /* ---------- Ano automático no rodapé ---------- */
   if (footerAno) {
     footerAno.textContent = new Date().getFullYear();
@@ -166,7 +229,7 @@
   /* ---------- Service Worker ---------- */
   if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register(new URL('./sw.js', window.location.href), { scope: './' })
+      navigator.serviceWorker.register(new URL('./sw.js', window.location.href), { scope: '/' })
         .catch(function () {
           // Ignora falha de registro em ambientes restritivos ou em páginas sem suporte.
         });
@@ -174,13 +237,18 @@
   }
 
   /* ---------- Carrossel de imagens ---------- */
-  const carrossel = document.querySelector('.carrossel');
-  if (carrossel) {
+  (function initCarrossel() {
+    const carrossel = document.querySelector('.carrossel');
+    if (!carrossel) {
+      return;
+    }
     const pista = carrossel.querySelector('.carrossel__slides');
     const slides = carrossel.querySelectorAll('.carrossel__slide');
     const btnAnterior = carrossel.querySelector('.carrossel__btn--anterior');
     const btnProximo = carrossel.querySelector('.carrossel__btn--proximo');
+    const btnPausa = carrossel.querySelector('.carrossel__btn--pausa');
     const pontos = carrossel.querySelectorAll('.carrossel__ponto');
+    const status = document.getElementById('carrossel-status');
     const totalSlides = slides.length;
 
     if (!pista || !totalSlides) {
@@ -191,6 +259,7 @@
     let arrastando = false;
     let inicioX = 0;
     let deslocamentoX = 0;
+    let pausadoManual = false;
 
     function irParaSlide(indice) {
       if (indice < 0) indice = totalSlides - 1;
@@ -204,8 +273,21 @@
       pontos.forEach(function (ponto, i) {
         const ativo = i === indiceAtual;
         ponto.classList.toggle('carrossel__ponto--ativo', ativo);
-        ponto.setAttribute('aria-selected', String(ativo));
+        ponto.setAttribute('aria-current', String(ativo));
       });
+      slides.forEach(function (slide, i) {
+        const ativo = i === indiceAtual;
+        if (ativo) {
+          slide.removeAttribute('aria-hidden');
+          if ('inert' in slide) slide.inert = false;
+        } else {
+          slide.setAttribute('aria-hidden', 'true');
+          if ('inert' in slide) slide.inert = true;
+        }
+      });
+      if (status) {
+        status.textContent = 'Slide ' + (indiceAtual + 1) + ' de ' + totalSlides;
+      }
     }
 
     if (btnAnterior && btnProximo) {
@@ -224,11 +306,13 @@
       });
     });
 
-    /* Navegação por teclado */
+    /* Navegação por teclado (o carrossel recebe foco via tabindex="0") */
     carrossel.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowLeft') {
+        e.preventDefault();
         irParaSlide(indiceAtual - 1);
       } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
         irParaSlide(indiceAtual + 1);
       }
     });
@@ -268,17 +352,61 @@
       deslocamentoX = 0;
     }, { passive: true });
 
-    /* Pausar autoplay em hover/foco */
-    let intervaloAutoPlay;
+    /* Pausar autoplay em hover/foco + botão pausar (WCAG 2.2.2) */
+    let intervaloAutoPlay = null;
+    function pararAutoPlay() {
+      if (intervaloAutoPlay !== null) {
+        clearInterval(intervaloAutoPlay);
+        intervaloAutoPlay = null;
+      }
+    }
     function iniciarAutoPlay() {
+      if (pausadoManual || prefersReducedMotion) {
+        return;
+      }
+      /* Evita acumular intervalos (mouseleave + focusout podem disparar em sequência). */
+      pararAutoPlay();
       intervaloAutoPlay = setInterval(function () {
         irParaSlide(indiceAtual + 1);
       }, 5000);
     }
-    function pararAutoPlay() {
-      clearInterval(intervaloAutoPlay);
+
+    function atualizarBtnPausa() {
+      if (!btnPausa) return;
+      btnPausa.setAttribute('aria-pressed', String(pausadoManual));
+      btnPausa.setAttribute('aria-label', pausadoManual ? 'Retomar apresentação automática' : 'Pausar apresentação automática');
+      var iconePausar = btnPausa.querySelector('.icone-pausar');
+      var iconeRetomar = btnPausa.querySelector('.icone-retomar');
+      if (iconePausar) iconePausar.hidden = pausadoManual;
+      if (iconeRetomar) iconeRetomar.hidden = !pausadoManual;
     }
 
+    if (btnPausa) {
+      atualizarBtnPausa();
+      // Se o usuário prefere movimento reduzido, já nasce pausado.
+      if (prefersReducedMotion) {
+        pausadoManual = true;
+        atualizarBtnPausa();
+      }
+      btnPausa.addEventListener('click', function () {
+        /* Com movimento reduzido o autoplay nunca liga: mantém pausado
+           para não exibir o estado "Pausar" sem nada tocando. */
+        if (prefersReducedMotion) {
+          pausadoManual = true;
+          atualizarBtnPausa();
+          return;
+        }
+        pausadoManual = !pausadoManual;
+        if (pausadoManual) {
+          pararAutoPlay();
+        } else {
+          iniciarAutoPlay();
+        }
+        atualizarBtnPausa();
+      });
+    }
+
+    atualizarPontos();
     if (!prefersReducedMotion) {
       iniciarAutoPlay();
       carrossel.addEventListener('mouseenter', pararAutoPlay);
@@ -290,6 +418,6 @@
         }
       });
     }
-  }
+  })();
 
 })();

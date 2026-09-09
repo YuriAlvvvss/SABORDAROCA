@@ -1,0 +1,4 @@
+# Cloudflare Pages — redireciona www para o domínio canônico
+https://www.sabordaroca.me/* https://sabordaroca.me/:splat 301
+http://sabordaroca.me/* https://sabordaroca.me/:splat 301
+http://www.sabordaroca.me/* https://sabordaroca.me/:splat 301
