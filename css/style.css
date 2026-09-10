@@ -1540,6 +1540,7 @@ img.imagem--indisponivel {
 .carrossel__btn--pausa:hover {
   transform: scale(1.08);
 }
+.carrossel__btn--pausa .icone-pausar[hidden],
 .carrossel__btn--pausa .icone-retomar[hidden] {
   display: none;
 }

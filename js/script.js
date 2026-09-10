@@ -354,6 +354,11 @@
 
     /* Pausar autoplay em hover/foco + botão pausar (WCAG 2.2.2) */
     let intervaloAutoPlay = null;
+    let emHover = false;
+    let emFoco = false;
+    function podeTocar() {
+      return !pausadoManual && !emHover && !emFoco;
+    }
     function pararAutoPlay() {
       if (intervaloAutoPlay !== null) {
         clearInterval(intervaloAutoPlay);
@@ -361,7 +366,7 @@
       }
     }
     function iniciarAutoPlay() {
-      if (pausadoManual || prefersReducedMotion) {
+      if (!podeTocar()) {
         return;
       }
       /* Evita acumular intervalos (mouseleave + focusout podem disparar em sequência). */
@@ -370,6 +375,13 @@
         irParaSlide(indiceAtual + 1);
       }, 5000);
     }
+    function sincronizarAutoPlay() {
+      if (podeTocar()) {
+        iniciarAutoPlay();
+      } else {
+        pararAutoPlay();
+      }
+    }
 
     function atualizarBtnPausa() {
       if (!btnPausa) return;
@@ -377,47 +389,51 @@
       btnPausa.setAttribute('aria-label', pausadoManual ? 'Retomar apresentação automática' : 'Pausar apresentação automática');
       var iconePausar = btnPausa.querySelector('.icone-pausar');
       var iconeRetomar = btnPausa.querySelector('.icone-retomar');
-      if (iconePausar) iconePausar.hidden = pausadoManual;
-      if (iconeRetomar) iconeRetomar.hidden = !pausadoManual;
+      /* SVGElement não reflete a propriedade `.hidden` em atributo em todos os browsers,
+         então alterna o atributo explicitamente para o CSS [hidden] funcionar. */
+      if (iconePausar) {
+        if (pausadoManual) iconePausar.setAttribute('hidden', '');
+        else iconePausar.removeAttribute('hidden');
+      }
+      if (iconeRetomar) {
+        if (pausadoManual) iconeRetomar.removeAttribute('hidden');
+        else iconeRetomar.setAttribute('hidden', '');
+      }
     }
 
     if (btnPausa) {
-      atualizarBtnPausa();
-      // Se o usuário prefere movimento reduzido, já nasce pausado.
+      // Se o usuário prefere movimento reduzido, já nasce pausado, mas permite opt-in manual.
       if (prefersReducedMotion) {
         pausadoManual = true;
-        atualizarBtnPausa();
       }
+      atualizarBtnPausa();
       btnPausa.addEventListener('click', function () {
-        /* Com movimento reduzido o autoplay nunca liga: mantém pausado
-           para não exibir o estado "Pausar" sem nada tocando. */
-        if (prefersReducedMotion) {
-          pausadoManual = true;
-          atualizarBtnPausa();
-          return;
-        }
         pausadoManual = !pausadoManual;
-        if (pausadoManual) {
-          pararAutoPlay();
-        } else {
-          iniciarAutoPlay();
-        }
+        sincronizarAutoPlay();
         atualizarBtnPausa();
       });
     }
 
     atualizarPontos();
-    if (!prefersReducedMotion) {
+    sincronizarAutoPlay();
+    carrossel.addEventListener('mouseenter', function () {
+      emHover = true;
+      pararAutoPlay();
+    });
+    carrossel.addEventListener('mouseleave', function () {
+      emHover = false;
       iniciarAutoPlay();
-      carrossel.addEventListener('mouseenter', pararAutoPlay);
-      carrossel.addEventListener('mouseleave', iniciarAutoPlay);
-      carrossel.addEventListener('focusin', pararAutoPlay);
-      carrossel.addEventListener('focusout', function (e) {
-        if (!carrossel.contains(e.relatedTarget)) {
-          iniciarAutoPlay();
-        }
-      });
-    }
+    });
+    carrossel.addEventListener('focusin', function () {
+      emFoco = true;
+      pararAutoPlay();
+    });
+    carrossel.addEventListener('focusout', function (e) {
+      if (!carrossel.contains(e.relatedTarget)) {
+        emFoco = false;
+        iniciarAutoPlay();
+      }
+    });
   })();
 
 })();
